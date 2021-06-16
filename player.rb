@@ -3,7 +3,9 @@ require 'gosu'
 class Player
   def initialize
     @image = Gosu::Image.new("starfighter.bmp")
-    @x = @y = @vel_x = @vel_y = @angle = 0.0
+    @x = @y = 0.0
+    @vel_x = @vel_y = 5.0 
+    @angle = 0.0
     @score = 0
   end
 
@@ -23,6 +25,14 @@ class Player
   def accelerate
     @vel_x += Gosu.offset_x(@angle, 0.5)
     @vel_y += Gosu.offset_y(@angle, 0.5)
+  end
+
+  def test
+    3.times do
+      @angle += 3
+      @vel_x += Gosu.offset_x(@angle, 1.5)
+      @vel_y += Gosu.offset_y(@angle, 1.5)
+    end
   end
 
   def move

@@ -5,7 +5,7 @@ class Tutorial < Gosu::Window
   def initialize
     super 640, 480
     self.caption = "Tutorial Game"
-    @bg = Gosu::Image.new("earth.png", :tileable => true)
+    @bg = Gosu::Image.new("earth.png", :tileable => false)
     @player = Player.new
     @player.warp(320, 240)
   end
@@ -20,11 +20,14 @@ class Tutorial < Gosu::Window
     if Gosu::button_down?(Gosu::KB_UP) || Gosu::button_down?(Gosu::GP_BUTTON_0)
       @player.accelerate
     end
+    if Gosu::button_down?(Gosu::KB_DOWN)
+      @player.test
+    end
     @player.move
   end
 
   def draw
-    @bg.draw(0, 0, 0)
+    # @bg.draw(0, 0, 0)
     @player.draw
   end
 
